@@ -1,4 +1,7 @@
 <?php
+
+
+
 /**
  * Plugin Name
  *
@@ -30,9 +33,14 @@ class Wpseemol_Main
 
     private function __construct()
     {
-        add_filter("the_content", array($this, "the_content_callback"));
+        // add_filter("the_content", array($this, "the_content_callback"));
 
-        add_action("wp_footer", array($this, "wp_footer_callback"));
+        // add_action("wp_footer", array($this, "wp_footer_callback"));
+
+
+        $this->define_constants();
+
+        $this->load_classes();
 
 
     }
@@ -47,6 +55,19 @@ class Wpseemol_Main
 
         return self::$instance;
 
+    }
+
+    private function define_constants()
+    {
+        define("WPSEEMOL_PLUGIN_PATH", plugin_dir_path(__FILE__));
+    }
+
+    // load all class function
+    private function load_classes()
+    {
+        require_once WPSEEMOL_PLUGIN_PATH . "includes/Admin_Menu.php";
+
+        $admin_menu = new Wpseemol\plugin\Admin_Menu();
     }
 
 
