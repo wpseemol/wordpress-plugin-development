@@ -23,4 +23,42 @@
  * 
  */
 
+class Wpseemol_Main
+{
 
+    private static $instance = null;
+
+    private function __construct()
+    {
+        add_filter("the_content", array($this, "the_content_callback"));
+    }
+
+    public static function get_instance()
+    {
+        if (self::$instance) {
+            return self::$instance;
+        }
+
+        self::$instance = new self();
+
+        return self::$instance;
+
+    }
+
+
+    public function the_content_callback($content)
+    {
+
+        $url = get_the_permalink();
+
+        return $content . "<p>$url</p>";
+    }
+
+
+
+
+
+
+}
+
+Wpseemol_Main::get_instance();
