@@ -25,13 +25,7 @@ class Admin_Menu
 
     public function query_post_callback()
     {
-        ?>
-        <div class="wrap">
-
-            <h1>hello world</h1>
-        </div>
-
-        <?php
+        include WPSEEMOL_PLUGIN_PATH . "includes/templates/query-post.php";
     }
 
 
