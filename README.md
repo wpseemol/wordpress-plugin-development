@@ -1,5 +1,7 @@
 # WordPress Plugin Learning Journey
 
+<image src="./images/plugin devlopment banar.jpg" />
+
 Welcome to my **WordPress Plugin Learning Journey** repository! This repository is dedicated to documenting my progress and knowledge as I delve into the world of WordPress plugin development. Each branch in this repository represents a specific class or topic I’ve learned, and each branch contains its own README file detailing what I’ve explored in that topic.
 
 ## Repository Structure
