@@ -291,3 +291,7 @@ add_shortcode('custom_post_list', 'display_custom_post_list');
 ## Conclusion
 
 The `get_the_permalink` function is a vital tool for retrieving post URLs programmatically in WordPress. By integrating it effectively in your plugins or themes, you can build dynamic, URL-driven features with ease and reliability.
+
+## wp_footer Action Hook
+
+## home_url() Function
