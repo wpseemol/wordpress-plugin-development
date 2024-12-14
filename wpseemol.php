@@ -33,6 +33,8 @@ class Wpseemol_Main
         add_filter("the_content", array($this, "the_content_callback"));
 
         add_action("wp_footer", array($this, "wp_footer_callback"));
+
+
     }
 
     public static function get_instance()
@@ -50,6 +52,14 @@ class Wpseemol_Main
 
     public function the_content_callback($content)
     {
+
+        $is_show = apply_filters("show_add_content", function () {
+            return (bool) true;
+        }, 10, 1);
+
+        if (!$is_show) {
+            return $content;
+        }
 
         $url = get_the_permalink();
 
