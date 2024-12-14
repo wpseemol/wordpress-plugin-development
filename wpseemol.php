@@ -31,6 +31,8 @@ class Wpseemol_Main
     private function __construct()
     {
         add_filter("the_content", array($this, "the_content_callback"));
+
+        add_action("wp_footer", array($this, "wp_footer_callback"));
     }
 
     public static function get_instance()
@@ -52,6 +54,14 @@ class Wpseemol_Main
         $url = get_the_permalink();
 
         return $content . "<p>$url</p>";
+    }
+
+
+    function wp_footer_callback()
+    {
+        $home_url = home_url();
+
+        echo "wpSeemol test: " . $home_url;
     }
 
 
