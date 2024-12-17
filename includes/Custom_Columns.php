@@ -55,7 +55,7 @@ class Custom_Column
             $title = get_the_title($post_id);
 
             if ($url) {
-                echo "<img src='$url' alt='$title' />";
+                echo "<img src='$url' alt='$title' style='width:50px; height:50px; border-radius: 100%; '   />";
             }
 
             echo "<p>$title</p>";
