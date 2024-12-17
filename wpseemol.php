@@ -26,6 +26,11 @@
  * 
  */
 
+
+if (!defined("ABSPATH")) {
+    return;
+}
+
 class Wpseemol_Main
 {
 
