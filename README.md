@@ -44,3 +44,39 @@ The `plugin_dir_path()` function in WordPress returns the absolute file system p
 ```php
 plugin_dir_path( string $file ): string
 ```
+
+## `WP_Query` and `get_posts()` in WordPress
+
+WordPress provides two primary ways to retrieve posts from the database: `WP_Query` and `get_posts()`. Both are used to fetch posts based on specific criteria, but they have some differences in how they're used.
+
+### `WP_Query`
+
+`WP_Query` is a powerful class that allows you to query posts in a very flexible way. It provides more control over how the query is executed, and it's typically used when you need advanced query parameters.
+
+#### Example Usage:
+
+```php
+$args = array(
+    'post_type' => 'post',       // Post type
+    'posts_per_page' => 5,       // Number of posts to retrieve
+    'orderby' => 'date',         // Order by date
+    'order' => 'DESC',           // Sort order (DESC or ASC)
+);
+
+$query = new WP_Query( $args );
+
+// Check if there are posts
+if ( $query->have_posts() ) {
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        // Output post content
+        the_title('<h2>', '</h2>');
+        the_excerpt();
+    }
+} else {
+    echo 'No posts found';
+}
+
+// Reset post data after custom query
+wp_reset_postdata();
+```

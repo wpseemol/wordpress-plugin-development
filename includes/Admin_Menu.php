@@ -15,8 +15,8 @@ class Admin_Menu
     public function admin_menu_callback()
     {
         add_menu_page(
-            "Query Post",
-            "Query Post",
+            "Query Posts",
+            "Query Posts",
             "administrator",
             "wpseemol_query_post",
             array($this, "query_post_callback")
@@ -25,6 +25,14 @@ class Admin_Menu
 
     public function query_post_callback()
     {
+
+        $posts = get_posts(array(
+            "post_type" => "post",
+            "post_per_page" => 5,
+
+        ));
+
+
         include WPSEEMOL_PLUGIN_PATH . "includes/templates/query-post.php";
     }
 
