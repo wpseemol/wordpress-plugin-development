@@ -80,3 +80,5 @@ if ( $query->have_posts() ) {
 // Reset post data after custom query
 wp_reset_postdata();
 ```
+
+### `wp_date( string $format, int $timestamp = null, DateTimeZone $timezone = null ): string|false`
