@@ -5,14 +5,18 @@
 
     <div class="tablenav top">
         <div class="alignleft actions">
-            <form action="" method="GET">
+            <form action="<?php echo admin_url(); ?>admin.php" method="GET">
+                <input type="hidden" name="page" value="wpseemol_query_post">
 
-
-                <select name="cat" id="cat" class="postform">
+                <select name="filter_cat" id="cat" class="postform">
                     <option value="0">All category</option>
                     <?php foreach ($terms as $term): ?>
 
-                        <option value="<?php echo $term->term_id; ?>"><?php echo $term->name ?></option>
+                        <option value="<?php echo $term->term_id; ?>"
+                        
+                        <?php echo $filter_cat == $term->term_id? " selected" : ""; ?>
+                        
+                        ><?php echo $term->name ?></option>
                     <?php endforeach; ?>
                 </select>
 

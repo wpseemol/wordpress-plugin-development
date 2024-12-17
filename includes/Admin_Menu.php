@@ -26,11 +26,24 @@ class Admin_Menu
     public function query_post_callback()
     {
 
-        $posts = get_posts(array(
+        $filter_cat = 0;
+
+        if (isset($_GET["filter_cat"])) {
+            $filter_cat = $_GET["filter_cat"];
+        }
+
+        $args = array(
             "post_type" => "post",
             "post_per_page" => 5,
 
-        ));
+
+        );
+
+        if (!empty($filter_cat)) {
+            $args['cat'] = $filter_cat;
+        }
+
+        $posts = get_posts($args);
 
         $terms = get_terms(array(
             "taxonomy" => "category"
