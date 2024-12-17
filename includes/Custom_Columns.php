@@ -10,6 +10,11 @@ if (!defined("ABSPATH")) {
 class Custom_Column
 {
 
+    public function __construct()
+    {
+
+    }
+
 }
 ;
 
