@@ -59,9 +59,6 @@ class Custom_Column
             }
 
             echo "<p>$title</p>";
-
-
-
             return;
         }
 
@@ -78,6 +75,7 @@ class Custom_Column
     {
 
         $columns["id"] = "id";
+        $columns["images"] = "images";
 
 
 
