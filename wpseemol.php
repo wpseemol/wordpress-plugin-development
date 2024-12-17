@@ -2,6 +2,8 @@
 
 
 
+
+
 /**
  * Plugin Name
  *
@@ -72,7 +74,13 @@ class Wpseemol_Main
     {
         require_once WPSEEMOL_PLUGIN_PATH . "includes/Admin_Menu.php";
 
-        $admin_menu = new Wpseemol\plugin\Admin_Menu();
+        require_once WPSEEMOL_PLUGIN_PATH . "includes/Custom_columns.php";
+
+
+
+        new Wpseemol\plugin\Admin_Menu();
+        new WP_seemol\includes\Custom_Column();
+
     }
 
 
