@@ -32,6 +32,10 @@ class Admin_Menu
 
         ));
 
+        $terms = get_terms(array(
+            "taxonomy" => "category"
+        ));
+
 
         include WPSEEMOL_PLUGIN_PATH . "includes/templates/query-post.php";
     }
