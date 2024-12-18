@@ -55,6 +55,7 @@ class Post_Type
             ),
             "show_in_rest" => true,
             "hierarchical" => true,
+            "rewrite" => array("slug" => "book-category")
         );
 
         register_taxonomy("book_category", "book", $args_taxonomy);

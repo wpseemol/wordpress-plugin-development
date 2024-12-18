@@ -49,6 +49,38 @@ function create_genre_taxonomy() {
 
 
     // more taxonomy
+    // --------------------------
+
+    $args_taxonomy = array(
+            "labels" => array(
+                "name" => "Categories",
+                "singular_name" => "Category",
+                "add_new_item" => "Add New Category"
+
+            ),
+            "show_in_rest" => true,
+            "hierarchical" => true,
+            "rewrite" => array("slug" => "book-category")
+        );
+
+        register_taxonomy("book_category", "book", $args_taxonomy);
+
+
+        $args_tags = array(
+            "labels" => array(
+                "name" => "Tags",
+                "singular_name" => "Tag",
+                "add_new_item" => "Add New Tag"
+
+            ),
+            "show_in_rest" => true,
+            "hierarchical" => false,
+        );
+
+
+        register_taxonomy("book_tags", "book", $args_tags);
+
+        //--------------------------------------
 
 
 
