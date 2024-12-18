@@ -17,6 +17,20 @@ function register_custom_post_type() {
         'rewrite'             => ['slug' => 'custom-posts'],
     ];
 
+    // more data arg
+    $args = array(
+            "public" => true,
+            "labels" => array(
+                "name" => "Books",
+                "singular_name" => "Book",
+                "add_new_item" => "Add New Book",
+                "search_items" => "Search Book",
+                "view_item" => "View Book",
+                "not_found" => "No Books found"
+            ),
+            "show_in_rest" => true
+        );
+
     register_post_type('custom_post', $args);
 }
 add_action('init', 'register_custom_post_type');
