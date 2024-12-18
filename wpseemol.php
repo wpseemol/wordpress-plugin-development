@@ -69,7 +69,9 @@ class Wpseemol_Main
     {
         require_once WPSEEMOL_PLUGIN_PATH . "includes/Admin_Menu.php";
 
-        require_once WPSEEMOL_PLUGIN_PATH . "includes/Custom_columns.php";
+        require_once WPSEEMOL_PLUGIN_PATH . "includes/Custom_Columns.php";
+
+        require_once WPSEEMOL_PLUGIN_PATH . "includes/Book_Custom_Columns.php";
 
         require_once WPSEEMOL_PLUGIN_PATH . "includes/Post_Type.php";
 
@@ -77,6 +79,7 @@ class Wpseemol_Main
 
         new Wpseemol\plugin\Admin_Menu();
         new WP_seemol\includes\Custom_Column();
+        new WP_seemol\includes\BooK_Custom_Column();
         new WP_seemol\includes\Post_Type();
 
     }
