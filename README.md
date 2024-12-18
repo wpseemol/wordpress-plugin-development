@@ -36,6 +36,9 @@ function register_custom_post_type() {
                 "thumbnail"
             ),
             "hierarchical" => true
+            "menu_position" => 3, // menu position change
+            "menu_icon" => "icon-name",
+            "has_archive" => true // has archive save
         );
 
     register_post_type('custom_post', $args);
