@@ -1,9 +1,4 @@
 <?php
-
-
-
-
-
 /**
  * Plugin Name
  *
@@ -76,10 +71,13 @@ class Wpseemol_Main
 
         require_once WPSEEMOL_PLUGIN_PATH . "includes/Custom_columns.php";
 
+        require_once WPSEEMOL_PLUGIN_PATH . "includes/Post_Type.php";
+
 
 
         new Wpseemol\plugin\Admin_Menu();
         new WP_seemol\includes\Custom_Column();
+        new WP_seemol\includes\Post_Type();
 
     }
 
