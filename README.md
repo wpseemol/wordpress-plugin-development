@@ -17,8 +17,8 @@ function register_custom_post_type() {
         'rewrite'             => ['slug' => 'custom-posts'],
     ];
 
-    // more data arg
-    $args = array(
+    // more info in $args
+     $args = array(
             "public" => true,
             "labels" => array(
                 "name" => "Books",
@@ -28,7 +28,14 @@ function register_custom_post_type() {
                 "view_item" => "View Book",
                 "not_found" => "No Books found"
             ),
-            "show_in_rest" => true
+            "show_in_rest" => true,
+            "supports" => array(
+                "title",
+                "editor",
+                "page-attributes",
+                "thumbnail"
+            ),
+            "hierarchical" => true
         );
 
     register_post_type('custom_post', $args);
@@ -44,6 +51,48 @@ add_action('init', 'register_custom_post_type');
 -   **`supports`**: Features supported by the custom post type (e.g., title, editor, thumbnail).
 -   **`has_archive`**: Enables archive pages for the post type.
 -   **`rewrite`**: Sets a custom URL slug.
+
+## REST API Endpoint
+
+When `show_in_rest` is set to `true`, the custom post type is accessible via the WordPress REST API. The endpoint follows the format:
+
+```
+/wp-json/wp/v2/{post-type}
+```
+
+For example, if your custom post type is registered with the slug `custom_post`, the endpoint will be:
+
+```
+/wp-json/wp/v2/custom_post
+```
+
+### Example Usage
+
+#### Fetch All Posts
+
+```bash
+GET /wp-json/wp/v2/custom_post
+```
+
+#### Fetch a Single Post by ID
+
+```bash
+GET /wp-json/wp/v2/custom_post/{id}
+```
+
+#### Create a New Post
+
+```bash
+POST /wp-json/wp/v2/custom_post
+Headers:
+  Content-Type: application/json
+Body:
+  {
+    "title": "New Post Title",
+    "content": "Content of the post",
+    "status": "publish"
+  }
+```
 
 ## Installation
 

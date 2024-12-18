@@ -29,7 +29,14 @@ class Post_Type
                 "view_item" => "View Book",
                 "not_found" => "No Books found"
             ),
-            "show_in_rest" => true
+            "show_in_rest" => true,
+            "supports" => array(
+                "title",
+                "editor",
+                "page-attributes",
+                "thumbnail"
+            ),
+            "hierarchical" => true
         );
 
         register_post_type("book", $args);
