@@ -105,3 +105,60 @@ add_action( 'init', 'create_genre_taxonomy' );
 3. Test your taxonomy thoroughly in the WordPress admin to ensure it works as expected.
 
 For more details, visit the [WordPress Codex](https://developer.wordpress.org/reference/functions/register_taxonomy/).
+
+---
+
+## Useful Functions for Working with Taxonomies
+
+### `get_term_link()`
+
+The `get_term_link()` function retrieves the URL for a given term in a specific taxonomy.
+
+#### Syntax
+
+```php
+get_term_link( int|WP_Term|string $term, string $taxonomy )
+```
+
+#### Parameters
+
+-   `$term` _(int|WP_Term|string, required)_: Term ID, WP_Term object, or term slug.
+-   `$taxonomy` _(string, required)_: The taxonomy for the term.
+
+#### Example
+
+```php
+$term = get_term_by( 'slug', 'fiction', 'book_category' );
+if ( $term && ! is_wp_error( $term ) ) {
+    $term_link = get_term_link( $term, 'book_category' );
+    echo '<a href="' . esc_url( $term_link ) . '">' . esc_html( $term->name ) . '</a>';
+}
+```
+
+### `wp_get_post_terms()`
+
+The `wp_get_post_terms()` function retrieves the terms assigned to a post for a specific taxonomy.
+
+#### Syntax
+
+```php
+wp_get_post_terms( int $post_id, string $taxonomy, array $args = array() )
+```
+
+#### Parameters
+
+-   `$post_id` _(int, required)_: The ID of the post.
+-   `$taxonomy` _(string, required)_: The taxonomy for which terms are required.
+-   `$args` _(array, optional)_: Arguments to modify the query.
+
+#### Example
+
+```php
+$post_id = get_the_ID();
+$terms = wp_get_post_terms( $post_id, 'book_category' );
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+    foreach ( $terms as $term ) {
+        echo '<span>' . esc_html( $term->name ) . '</span>';
+    }
+}
+```

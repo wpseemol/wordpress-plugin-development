@@ -13,6 +13,9 @@ class Post_Type
     public function __construct()
     {
         add_action("init", array($this, "init_callback"));
+
+
+        add_filter("the_content", array($this, "the_content_callback"));
     }
 
 
@@ -75,5 +78,40 @@ class Post_Type
 
         register_taxonomy("book_tags", "book", $args_tags);
 
+    }
+
+
+    public function the_content_callback($content)
+    {
+
+        if (!is_singular("book")) {
+            return $content;
+        }
+
+        $terms = wp_get_post_terms(get_the_ID(), "book_category");
+
+
+
+        ob_start()
+            ?>
+
+
+        <ul>
+            <?php foreach ($terms as $term): ?>
+                <li>
+                    <a href="<?php echo get_term_link($term, "book_category"); ?>">
+                        <?php echo $term->name; ?>
+                    </a>
+
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+
+        <?php
+        $html = ob_get_clean();
+
+
+        return $content . $html;
     }
 }
