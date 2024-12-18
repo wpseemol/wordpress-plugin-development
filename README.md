@@ -47,6 +47,11 @@ function create_genre_taxonomy() {
         'rewrite'           => array( 'slug' => 'genre' ),
     );
 
+
+    // more taxonomy
+
+
+
     register_taxonomy( 'genre', array( 'book' ), $args );
 }
 add_action( 'init', 'create_genre_taxonomy' );
