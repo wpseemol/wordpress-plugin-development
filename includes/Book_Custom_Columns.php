@@ -91,10 +91,6 @@ class BooK_Custom_Column
         $columns["custom_category_col"] = "custom_category_col";
         return $columns;
     }
-
-
-
-
 }
 
 
