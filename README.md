@@ -162,3 +162,37 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
     }
 }
 ```
+
+### `{$taxonomy}_edit_form_fields`
+
+The `{$taxonomy}_edit_form_fields` hook allows you to add custom fields to the taxonomy edit screen in WordPress.
+
+#### Example
+
+```php
+add_action( 'book_category_edit_form_fields', 'add_custom_fields_to_taxonomy_edit_form', 10, 2 );
+
+function add_custom_fields_to_taxonomy_edit_form( $term, $taxonomy ) {
+    // Retrieve existing value
+    $custom_field_value = get_term_meta( $term->term_id, 'custom_field_key', true );
+    ?>
+    <tr class="form-field">
+        <th scope="row" valign="top">
+            <label for="custom_field_key">Custom Field</label>
+        </th>
+        <td>
+            <input type="text" name="custom_field_key" id="custom_field_key" value="<?php echo esc_attr( $custom_field_value ); ?>" />
+            <p class="description">Enter the value for this custom field.</p>
+        </td>
+    </tr>
+    <?php
+}
+
+add_action( 'edited_book_category', 'save_custom_fields_in_taxonomy', 10, 2 );
+
+function save_custom_fields_in_taxonomy( $term_id, $taxonomy ) {
+    if ( isset( $_POST['custom_field_key'] ) ) {
+        update_term_meta( $term_id, 'custom_field_key', sanitize_text_field( $_POST['custom_field_key'] ) );
+    }
+}
+```
