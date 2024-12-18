@@ -32,7 +32,7 @@ class BooK_Custom_Column
             $new_columns[$key] = $column;
             if ("title" === $key) {
 
-                $new_columns["categories"] = "Categories";
+                $new_columns["custom_category_col"] = "Categories";
                 $new_columns["images"] = "Images";
             }
 
@@ -46,13 +46,16 @@ class BooK_Custom_Column
     public function manage_book_posts_custom_column_callback($column_name, $post_id)
     {
 
+
+
+
         if ("id" === $column_name) {
             echo $post_id;
             return;
         }
 
         // categories filed value set
-        if ("categories" === $column_name) {
+        if ("custom_category_col" === $column_name) {
 
             $categories = get_the_terms($post_id, "book_category");
 
@@ -61,13 +64,11 @@ class BooK_Custom_Column
                     return $cat->name;
                 }, $categories);
 
-                echo implode(",", $category_names);
+                echo implode(", ", $category_names);
             } else {
                 echo "No Categories";
             }
 
-
-            return;
         }
 
         if ("images" === $column_name) {
@@ -85,7 +86,9 @@ class BooK_Custom_Column
 
     public function manage_book_sortable_columns_callback($columns)
     {
+
         $columns["id"] = "id";
+        $columns["custom_category_col"] = "custom_category_col";
         return $columns;
     }
 
